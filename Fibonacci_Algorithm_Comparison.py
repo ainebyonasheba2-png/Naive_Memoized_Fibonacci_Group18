@@ -61,3 +61,27 @@ for n in n_values_A:
     if duration > 60:
         print(f"Algorithm A exceeded 60 seconds at n={n}.")
         break
+if results_A and results_B:
+    n_A, c_A, _ = zip(*results_A)
+    n_B, c_B, _ = zip(*results_B)
+
+    plt.figure(figsize=(10, 5))
+
+    plt.subplot(1, 2, 1)
+    plt.plot(n_A, c_A, marker="o", color="red")
+    plt.yscale("log")
+    plt.title("Algorithm A: Calls vs n (Log Scale)")
+    plt.xlabel("n")
+    plt.ylabel("Number of Calls")
+
+    plt.subplot(1, 2, 2)
+    plt.plot(n_B, c_B, marker="o", color="blue")
+    plt.title("Algorithm B: Calls vs n")
+    plt.xlabel("n")
+    plt.ylabel("Number of Calls")
+
+    plt.tight_layout()
+    plt.show()
+else:
+    print("Unable to plot because one or both result lists are empty.")
+    
